@@ -1,13 +1,13 @@
-package com.example.spring_security_and_boot;
+package com.learn.shiro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringSecurityAndBootApplication {
+public class ShiroApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringSecurityAndBootApplication.class, args);
+        SpringApplication.run(ShiroApplication.class, args);
     }
 
 }
