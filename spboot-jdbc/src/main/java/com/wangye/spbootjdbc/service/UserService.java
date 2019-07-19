@@ -15,6 +15,7 @@ public class UserService {
     private JdbcTemplate jdbcTemplate;
 
     public User getUserById(Long id){
+
         User user;
         String sql = "select * from user where id = ?";
         List<User> users = jdbcTemplate.query(sql, new Object[] {id},new BeanPropertyRowMapper<User>(User.class));
