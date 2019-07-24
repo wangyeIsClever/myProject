@@ -11,6 +11,7 @@ public class UserService {
 
     private UserMapper userMapper;
 
+    // Spring推荐在不强制依赖的时候，使用这种方式注入
     @Autowired
     public void setUserMapper(UserMapper userMapper) {
         this.userMapper = userMapper;
