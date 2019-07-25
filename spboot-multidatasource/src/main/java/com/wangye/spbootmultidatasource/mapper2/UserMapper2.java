@@ -1,15 +1,15 @@
 package com.wangye.spbootmultidatasource.mapper2;
 
 
-import com.wangye.spbootmybatis3.model.User;
+import com.wangye.spbootmultidatasource.model2.User2;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserMapper {
+public interface UserMapper2 {
 
-    User getUserById1(@Param("id") Long id);
+    User2 getUserById1(@Param("id") Long id);
 
     @Select({"<script>",
             "select",
@@ -25,5 +25,7 @@ public interface UserMapper {
             "   </if>",
             "</where>",
             "</script>"})
-    User getUserById(@Param("id") Long id);
+    User2 getUserById(@Param("id") Long id);
+
+    void addUser(User2 user2);
 }

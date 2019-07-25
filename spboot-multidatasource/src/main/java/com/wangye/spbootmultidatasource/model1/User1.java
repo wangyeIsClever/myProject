@@ -1,6 +1,6 @@
-package com.wangye.spbootmultidatasource.model2;
+package com.wangye.spbootmultidatasource.model1;
 
-public class User {
+public class User1 {
 
     private Long id;
 

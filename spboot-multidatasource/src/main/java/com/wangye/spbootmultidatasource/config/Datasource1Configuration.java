@@ -51,9 +51,9 @@ public class Datasource1Configuration {
             throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(datasource);
-        bean.setMapperLocations(
-                // 设置mybatis的xml所在位置
-                new PathMatchingResourcePatternResolver().getResources(datasourceProperties.getMapperLocations()));
+        // 设置mybatis的xml所在位置
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(datasourceProperties.getMapperLocations()));
+        bean.setTypeAliasesPackage(datasourceProperties.getTypeAliasesPackage());
         return bean.getObject();
     }
 

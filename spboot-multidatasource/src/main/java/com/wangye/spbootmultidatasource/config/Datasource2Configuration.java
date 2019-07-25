@@ -16,7 +16,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = "com.wangye.spbootmultidatasource.mapper2", sqlSessionFactoryRef = "test1SqlSessionFactory")
+@MapperScan(basePackages = "com.wangye.spbootmultidatasource.mapper2", sqlSessionFactoryRef = "test2SqlSessionFactory")
 public class Datasource2Configuration {
 
 
@@ -27,9 +27,8 @@ public class Datasource2Configuration {
         this.datasourceProperties = datasourceProperties;
     }
 
-    @Bean(name = "test1DataSource")
-    @Primary// 表示这个数据源是默认数据源 // 读取application.properties中的配置参数映射成为一个对象
-    public DataSource getDateSource1() {
+    @Bean(name = "test2DataSource")// 读取application.properties中的配置参数映射成为一个对象
+    public DataSource getDateSource2() {
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setJdbcUrl(datasourceProperties.getUrl());
         hikariConfig.setUsername(datasourceProperties.getUsername());
@@ -45,22 +44,19 @@ public class Datasource2Configuration {
     }
 
 
-    @Bean(name = "test1SqlSessionFactory")
-    @Primary // 表示这个数据源是默认数据源 // @Qualifier表示查找Spring容器中名字为test1DataSource的对象
-    public SqlSessionFactory test1SqlSessionFactory(@Qualifier("test1DataSource") DataSource datasource)
+    @Bean(name = "test2SqlSessionFactory")// @Qualifier表示查找Spring容器中名字为test1DataSource的对象
+    public SqlSessionFactory test2SqlSessionFactory(@Qualifier("test2DataSource") DataSource datasource)
             throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(datasource);
-        bean.setMapperLocations(
-                // 设置mybatis的xml所在位置
-                new PathMatchingResourcePatternResolver().getResources(datasourceProperties.getMapperLocations()));
+        // 设置mybatis的xml所在位置
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(datasourceProperties.getMapperLocations()));
+        bean.setTypeAliasesPackage(datasourceProperties.getTypeAliasesPackage());
         return bean.getObject();
     }
 
-    @Bean("test1SqlSessionTemplate")
-    @Primary
-    public SqlSessionTemplate test1sqlsessiontemplate(
-            @Qualifier("test1SqlSessionFactory") SqlSessionFactory sessionfactory) {
+    @Bean("test2SqlSessionTemplate")
+    public SqlSessionTemplate test2sqlsessiontemplate(@Qualifier("test2SqlSessionFactory") SqlSessionFactory sessionfactory) {
         return new SqlSessionTemplate(sessionfactory);
     }
 
