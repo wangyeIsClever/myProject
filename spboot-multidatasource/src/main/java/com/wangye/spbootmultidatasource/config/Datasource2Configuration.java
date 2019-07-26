@@ -12,13 +12,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
 @Configuration
 @MapperScan(basePackages = "com.wangye.spbootmultidatasource.mapper2", sqlSessionFactoryRef = "test2SqlSessionFactory")
 public class Datasource2Configuration {
-
 
     private Datasource2Properties datasourceProperties;
 
@@ -43,7 +44,6 @@ public class Datasource2Configuration {
         return new HikariDataSource(hikariConfig);
     }
 
-
     @Bean(name = "test2SqlSessionFactory")// @Qualifier表示查找Spring容器中名字为test1DataSource的对象
     public SqlSessionFactory test2SqlSessionFactory(@Qualifier("test2DataSource") DataSource datasource)
             throws Exception {
@@ -60,5 +60,13 @@ public class Datasource2Configuration {
         return new SqlSessionTemplate(sessionfactory);
     }
 
-
+    /**
+     * 为test2DataSource配置事务管理器
+     * @param test2DataSource test2DataSource数据源
+     * @return PlatformTransactionManager事务管理器
+     */
+    @Bean // 这里方法名会设置为@Bean的名字
+    public PlatformTransactionManager test2TransactionManager(@Qualifier("test2DataSource")DataSource test2DataSource) {
+        return new DataSourceTransactionManager(test2DataSource);
+    }
 }

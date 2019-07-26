@@ -12,13 +12,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
 @Configuration
 @MapperScan(basePackages = "com.wangye.spbootmultidatasource.mapper1", sqlSessionFactoryRef = "test1SqlSessionFactory")
 public class Datasource1Configuration {
-
 
     private Datasource1Properties datasourceProperties;
 
@@ -44,7 +45,6 @@ public class Datasource1Configuration {
         return new HikariDataSource(hikariConfig);
     }
 
-
     @Bean(name = "test1SqlSessionFactory")
     @Primary // 表示这个数据源是默认数据源 // @Qualifier表示查找Spring容器中名字为test1DataSource的对象
     public SqlSessionFactory test1SqlSessionFactory(@Qualifier("test1DataSource") DataSource datasource)
@@ -63,6 +63,18 @@ public class Datasource1Configuration {
             @Qualifier("test1SqlSessionFactory") SqlSessionFactory sessionfactory) {
         return new SqlSessionTemplate(sessionfactory);
     }
+
+    /**
+     * 为 test1DataSource 配置事务管理器
+     * @param test1DataSource test2数据源
+     * @return DataSourceTransactionManager 事务管理器
+     */
+    @Bean // 这里方法名会设置为@Bean的名字
+    @Primary
+    public PlatformTransactionManager test1TransactionManager(@Qualifier("test1DataSource")DataSource test1DataSource) {
+        return new DataSourceTransactionManager(test1DataSource);
+    }
+
 
 
 }

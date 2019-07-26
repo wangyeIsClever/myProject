@@ -32,5 +32,4 @@ public class User1 {
         this.name = name;
     }
 
-
 }
