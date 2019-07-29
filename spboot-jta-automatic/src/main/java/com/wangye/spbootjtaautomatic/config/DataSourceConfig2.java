@@ -50,6 +50,7 @@ public class DataSourceConfig2 {
         xaDataSource.setMaintenanceInterval(db2Properties.getMaintenanceInterval());
         xaDataSource.setMaxIdleTime(db2Properties.getMaxIdleTime());
         xaDataSource.setTestQuery(db2Properties.getTestQuery());
+
         return xaDataSource;
     }
 
