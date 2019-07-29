@@ -4,3 +4,4 @@ spboot-jdbc/spboot-jdbc.iml
 spboot-mybatis1/src/main/resources/static/
 spboot-mybatis1/src/main/resources/templates/
 /learnAndTest/learnAndTest.iml
+/learnAndTest/target/
