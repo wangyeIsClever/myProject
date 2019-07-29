@@ -26,6 +26,7 @@ public class UserService {
 
     private UserMapper2 userMapper2;
 
+    @Transactional
     public String addUser(){
         User1 user1 = new User1();
         user1.setName("小四");
