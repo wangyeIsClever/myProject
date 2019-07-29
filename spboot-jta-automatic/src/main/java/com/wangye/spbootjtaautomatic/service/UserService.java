@@ -39,7 +39,7 @@ public class UserService {
         return "success";
     }
 
-    @Transactional(value = "test1TransactionManager")
+    @Transactional
     public String adUserTransaction1(){
         User1 user1 = new User1();
         user1.setName("小八");
@@ -49,7 +49,7 @@ public class UserService {
         return "success";
     }
 
-    @Transactional(value = "test2TransactionManager")
+    @Transactional
     public String adUserTransaction2(){
         User2 user2 = new User2();
         user2.setName("小留");
