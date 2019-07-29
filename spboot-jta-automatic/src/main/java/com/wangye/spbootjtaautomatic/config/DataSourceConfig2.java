@@ -1,6 +1,5 @@
 package com.wangye.spbootjtaautomatic.config;
 
-import com.atomikos.jdbc.AtomikosDataSourceBean;
 import com.mysql.cj.jdbc.MysqlXADataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -8,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.jta.atomikos.AtomikosDataSourceBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -55,17 +55,16 @@ public class DataSourceConfig2 {
     }
 
     @Bean(name = "test2SqlSessionFactory")
-    @Autowired
     public SqlSessionFactory test2SqlSessionFactory(@Qualifier("test2DataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(db2Properties.getMapperLocations()));
         bean.setTypeAliasesPackage(db2Properties.getTypeAliasesPackage());
-        return bean.getObject();
+        SqlSessionFactory sqlSessionFactory = bean.getObject();
+        return sqlSessionFactory;
     }
 
     @Bean(name = "test2SqlSessionTemplate")
-    @Autowired
     public SqlSessionTemplate test2SqlSessionTemplate(@Qualifier("test2SqlSessionFactory") SqlSessionFactory sqlSessionFactory){
         return new SqlSessionTemplate(sqlSessionFactory);
     }
