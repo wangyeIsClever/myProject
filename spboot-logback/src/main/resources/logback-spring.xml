@@ -60,6 +60,15 @@
     </appender>
 
     <!--
+       root与logger是父子关系，没有特别定义则默认为root，任何一个类只会和一个logger对应，
+       要么是定义的logger，要么是root，判断的关键在于找到这个logger，然后判断这个logger的appender和level。
+       -->
+    <root level="debug">
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="appLogAppender"/>
+    </root>
+
+    <!--
 		logger主要用于存放日志对象，也可以定义日志类型、级别
 		name：表示匹配的logger类型前缀，也就是包的前半部分
 		level：要记录的日志级别，包括 TRACE < DEBUG < INFO < WARN < ERROR
@@ -68,23 +77,17 @@
 		表示当前logger的appender-ref和rootLogger的appender-ref都有效
     -->
     <!-- app logger -->
-    <logger name="com.wangye.spbootlogback" level="info" additivity="false">
-        <appender-ref ref="stdout"/>
-        <appender-ref ref="appLogAppender"/>
-    </logger>
-
+    <logger name="com.wangye.spbootlogback" level="debug" additivity="true"/>
     <!-- Spring framework logger -->
-    <logger name="org.springframework" level="debug" additivity="false">
-        <appender-ref ref="stdout"/>
-        <appender-ref ref="appLogAppender"/>
-    </logger>
-
-    <!--
-    root与logger是父子关系，没有特别定义则默认为root，任何一个类只会和一个logger对应，
-    要么是定义的logger，要么是root，判断的关键在于找到这个logger，然后判断这个logger的appender和level。
-    -->
-    <root level="info">
-        <appender-ref ref="stdout"/>
-        <appender-ref ref="appLogAppender"/>
-    </root>
+    <logger name="org.springframework" level="debug" additivity="true"  />
+    <logger name="org.springframework.web" level="debug" additivity="true"/>
+    <logger name="org.springframework.web.servlet" level="debug" additivity="true"/>
+    <logger name="org.springframework.http" level="debug" additivity="true"/>
+    <logger name="org.springframework.remoting" level="debug" additivity="true"/>
+    <logger name="org.springframework.transaction" level="debug" additivity="true"/>
+    <logger name="org.springframework.dao" level="debug" additivity="true"/>
+    <logger name="org.springframework.jdbc" level="debug" additivity="true"  />
+    <logger name="org.apache.ibatis" level="debug" additivity="true"/>
+    <logger name="org.mybatis" level="debug" additivity="true"/>
+    <logger name="java.sql" level="debug"  additivity="true" />
 </configuration>

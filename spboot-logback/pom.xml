@@ -50,4 +50,34 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <spring.active>dev</spring.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <spring.active>test</spring.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>stg</id>
+            <properties>
+                <spring.active>stg</spring.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>prd</id>
+            <properties>
+                <spring.active>prd</spring.active>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>
