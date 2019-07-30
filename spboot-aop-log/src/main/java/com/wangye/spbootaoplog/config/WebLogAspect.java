@@ -1,7 +1,6 @@
 package com.wangye.spbootaoplog.config;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -45,9 +44,7 @@ public class WebLogAspect {
 
     @AfterReturning(returning = "ret", pointcut = "webLog()")
     public void doAfterReturning(Object ret) throws Throwable {
-        ObjectMapper objectMapper = new ObjectMapper();
-        String outPrarm = objectMapper.writeValueAsString(ret);
         // 处理完请求，返回内容
-        logger.info("RESPONSE : " + outPrarm);
+        logger.info("RESPONSE : " + ret);
     }
 }
