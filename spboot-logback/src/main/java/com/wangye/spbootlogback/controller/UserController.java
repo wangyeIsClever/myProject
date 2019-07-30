@@ -23,6 +23,7 @@ public class UserController {
     @RequestMapping("/getUserById1/{id}")
     @ResponseBody
     public User getUserById1(@PathVariable("id") Long id){
+        int i= 1/0;
         return userService.getUserById1(id);
     }
 
