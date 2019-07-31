@@ -39,7 +39,7 @@ public interface UserMapper {
             "insert into user ",
             "(id,name,age) ",
             "values ",
-            "(#{id},#{name},#age)",
+            "(#{id},#{name},#{age})",
             "</script>"})
     @CacheEvict(value = "userCache",allEntries=true)
     int save(User user);
