@@ -1,8 +1,5 @@
 package ThreadLearn.consumerAndProductor4;
 
-import GOF23.C5_visitor.ComsumeBill;
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,8 +35,6 @@ public class CAndPTest {
             consumers.get(i).stopThread();
         }
         executorService.shutdown();
-
-
     }
 }
 
