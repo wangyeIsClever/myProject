@@ -1,6 +1,5 @@
 package ThreadLearn.consumerAndProductor2;
 
-import java.util.Random;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -18,6 +17,7 @@ public class CAndPTest {
         Consumer consumer1 = new Consumer("C_1",appleBox);
         Consumer consumer2 = new Consumer("C_2",appleBox);
         Consumer consumer3 = new Consumer("C_3",appleBox);
+
 
         consumer1.start();
         consumer2.start();
