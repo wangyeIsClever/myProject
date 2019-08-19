@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestService {
 
-    @Reference(version = "1.0.0")
+    @Reference(version = "1.0.0",check = false,interfaceClass = BeyService.class)
     private BeyService beyService;
 
     public void sayBey(String msg){

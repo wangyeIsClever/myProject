@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @EnableDubbo
 @EnableDubboConfiguration
-@DubboComponentScan("com.wangye.candp1.dubboService")
+@DubboComponentScan("com.wangye.candp2.dubboService")
 public class CAndP2Application {
 
     public static void main(String[] args) {
