@@ -1,4 +1,6 @@
 package com.wangye.dubbo.serInterface;
 
-public class BeyService {
+public interface BeyService {
+
+    void sayBay(String msg);
 }

@@ -12,6 +12,7 @@
     <modules>
         <module>dubbo-interface</module>
         <module>c-and-p-1</module>
+        <module>c-and-p-2</module>
     </modules>
 
 
