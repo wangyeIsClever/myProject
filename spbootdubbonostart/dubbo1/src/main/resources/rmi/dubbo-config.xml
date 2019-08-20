@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="dubbo1"  />
+    
+    <dubbo:registry protocol="zookeeper" address="${registryUrl}" client="curator"/>
+ 
+    <dubbo:consumer loadbalance="leastactive" check="false" init="false" layer="service"/>
+    
+    <dubbo:protocol name="dubbo" port="${dubboPort}" />
+
+ 	<dubbo:provider version="${dubbo1Version}" protocol="dubbo"   loadbalance="leastactive" cluster="failfast" timeout="60000" layer="service"/>
+ 	
+ 	<import resource="classpath:rmi/consumer.xml" /> 
+ 	
+ 	<import resource="classpath:rmi/provider.xml" /> 
+</beans>
