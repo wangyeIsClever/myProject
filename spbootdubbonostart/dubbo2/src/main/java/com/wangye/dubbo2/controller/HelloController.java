@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
+    // 这里调用的是dubbo1提供的服务
     @Autowired
     private HelloService helloService;
 
@@ -16,6 +17,5 @@ public class HelloController {
     public String sayBye(@PathVariable String name){
         return helloService.sayHello(name);
     }
-
 
 }

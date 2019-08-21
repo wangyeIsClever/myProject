@@ -31,18 +31,7 @@
         </dependency>
 
         <!-- _________________________________________________dubbo开始_______________________________________ -->
-        <!-- Dubbo Spring Boot Starter -->
-        <!--<dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>2.7.0</version>
-        </dependency>
---><!--<dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>2.7.0</version>
-        </dependency>
--->
+
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo</artifactId>
@@ -70,6 +59,7 @@
         </dependency>
         <!-- _________________________________________________dubbo结束_______________________________________ -->
 
+        <!-- 依赖公共接口 -->
         <dependency>
             <groupId>com.wangye</groupId>
             <artifactId>dubbo-api</artifactId>

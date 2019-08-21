@@ -7,16 +7,7 @@
         http://code.alibabatech.com/schema/dubbo
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<!-- <dubbo:reference id="capitalFlowInfoQueryService" check="false" interface="com.miaogedan.cpp.service.CapitalFlowInfoQueryService" version="${cpp.rmi.version}" retries="0"/>
-	<dubbo:reference id="channelCapitalRecordService" check="false" interface="com.miaogedan.cpp.service.ChannelCapitalRecordService" version="${cpp.rmi.version}" retries="0"/>
-	<dubbo:reference id="custAccountService" check="false" interface="com.miaogedan.cpp.service.CustAccountService" version="${cpp.rmi.version}" retries="0"/>
-	<dubbo:reference id="custQueryService" check="false" interface="com.miaogedan.cpp.service.CustQueryService" version="${cpp.rmi.version}" retries="0"/>
-	<dubbo:reference id="custService" check="false" interface="com.miaogedan.cpp.service.CustService" version="${cpp.rmi.version}" retries="0"/>
-	<dubbo:reference id="rechargeService" check="false" interface="com.miaogedan.cpp.service.RechargeService" version="${cpp.rmi.version}" retries="0"/>
-	<dubbo:reference id="withdrawService" check="false" interface="com.miaogedan.cpp.service.WithdrawService" version="${cpp.rmi.version}" retries="0"/>
-	<dubbo:reference id="withdrawCapitalChangeRecordService" check="false" interface="com.miaogedan.cpp.service.WithdrawCapitalChangeRecordService" version="${cpp.rmi.version}" retries="0"/> -->
 
     <dubbo:reference interface="com.wangye.dubboapi.api.ByeService" id="byeService" version="${dubbo2Version}"/>
 
-	<!-- <dubbo:reference id="tradeOrderService" check="false" interface="com.trade.miaogedan.service.OrderService" version="${miaogedan.trade.rmi.version}" retries="0"/> -->
 </beans>
