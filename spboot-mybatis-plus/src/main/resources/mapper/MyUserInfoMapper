@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.wangye.spbootmybatisplus.mapper.MyUserInfoMapper">
+
+    <select id="selectById" resultType="com.wangye.spbootmybatisplus.model.MyUserInfo">
+        select
+            id as id,
+            name as name,
+            age as age
+        from
+            my_user_info
+        where
+            id = #{id}
+    </select>
+
+    <select id="getPage" resultType="com.wangye.spbootmybatisplus.model.MyUserInfo">
+        select
+            id as id,
+            name as name,
+            age as age
+        from
+            my_user_info
+    </select>
+
+</mapper>
