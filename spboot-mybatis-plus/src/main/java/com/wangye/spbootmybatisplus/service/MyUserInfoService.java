@@ -23,12 +23,12 @@ public class MyUserInfoService {
 
     /**
      * 分页查询
-     * @return
      */
     public IPage<MyUserInfo> getPage(){
         IPage<MyUserInfo> page = new Page<>();
         page.setCurrent(1);
         page.setSize(5);
+        page.orders();
         return myUserInfoMapper.selectPage(page,null);
     }
 }
