@@ -48,13 +48,29 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>application-*.properties</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>application-${profiles.active}.properties</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 
     <profiles>
         <profile>
             <id>dev</id>
             <properties>
-                <spring.active>dev</spring.active>
+                <profiles.active>dev</profiles.active>
+                <modifier>-dev</modifier>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -63,19 +79,22 @@
         <profile>
             <id>test</id>
             <properties>
-                <spring.active>test</spring.active>
+                <profiles.active>test</profiles.active>
+                <modifier>-test</modifier>
             </properties>
         </profile>
         <profile>
             <id>stg</id>
             <properties>
-                <spring.active>stg</spring.active>
+                <profiles.active>stg</profiles.active>
+                <modifier>-stg</modifier>
             </properties>
         </profile>
         <profile>
             <id>prd</id>
             <properties>
-                <spring.active>prd</spring.active>
+                <profiles.active>prd</profiles.active>
+                <modifier>-prd</modifier>
             </properties>
         </profile>
     </profiles>
