@@ -40,8 +40,8 @@ public class UserController {
             user =  userService.getUserById(id);
             logger.info("出参:{}",user);
         }catch (Exception e){
-            logger.info("异常:{}", ExceptionUtils.getRootCauseMessage(e) + ExceptionUtils.getStackTrace(e));
-            logger.info(" 异常路径:{}",e.getStackTrace());
+            logger.error("异常:", e);
+            //logger.info(" 异常路径:{}",e.getStackTrace());
             System.out.println(e.toString());
         }
         return user;
