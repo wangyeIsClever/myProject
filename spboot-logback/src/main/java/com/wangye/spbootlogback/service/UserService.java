@@ -29,7 +29,7 @@ public class UserService {
     }
 
     public User getUserById(Long id) {
-
+        int i = 1/0;
         return userMapper.getUserById(id);
     }
 }
