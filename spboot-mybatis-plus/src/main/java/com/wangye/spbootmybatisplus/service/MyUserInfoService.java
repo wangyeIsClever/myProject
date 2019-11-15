@@ -18,7 +18,7 @@ public class MyUserInfoService {
     }
 
     public MyUserInfo getById(Long id){
-        return myUserInfoMapper.selectById(id);
+        return myUserInfoMapper.selectById1(id);
     }
 
     /**
