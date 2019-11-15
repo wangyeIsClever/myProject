@@ -3,7 +3,7 @@
 
 <mapper namespace="com.wangye.spbootmybatisplus.mapper.MyUserInfoMapper">
 
-    <select id="selectById" resultType="com.wangye.spbootmybatisplus.model.MyUserInfo">
+    <select id="selectById1" resultType="com.wangye.spbootmybatisplus.model.MyUserInfo">
         select
             id as id,
             name as name,
@@ -14,7 +14,7 @@
             id = #{id}
     </select>
 
-    <select id="getPage" resultType="com.wangye.spbootmybatisplus.model.MyUserInfo">
+    <select id="getPageByUser" resultType="com.wangye.spbootmybatisplus.model.MyUserInfo">
         select
             id as id,
             name as name,
