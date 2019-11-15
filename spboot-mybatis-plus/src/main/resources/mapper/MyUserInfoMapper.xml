@@ -14,13 +14,33 @@
             id = #{id}
     </select>
 
+    <!--自定义分页，使用mybatis的分页插件-->
     <select id="getPageByUser" resultType="com.wangye.spbootmybatisplus.model.MyUserInfo">
         select
-            id as id,
-            name as name,
-            age as age
+        id as id,
+        name as name,
+        age as age
         from
-            my_user_info
+        my_user_info
+        <where>
+            <if test="user.age != null">
+                age = #{user.age}
+            </if>
+        </where>
+    </select>
+
+    <!--自定义分页2，使用mybatis的分页插件 ,返回的是自定义的类型-->
+    <select id="getPageByUser2" resultType="com.wangye.spbootmybatisplus.bo.MyUserBO">
+        select
+        id as id,
+        name as name
+        from
+        my_user_info
+        <where>
+            <if test="user.name != null">
+                name = #{user.name}
+            </if>
+        </where>
     </select>
 
 </mapper>
